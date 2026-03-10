@@ -13,6 +13,8 @@ import astroExpressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://jialonglong.github.io",
+  base: "/REAL_website",
   vite: {
     plugins: [tailwindcss()],
   },
