@@ -14,7 +14,7 @@ import astroExpressiveCode from "astro-expressive-code";
 // https://astro.build/config
 export default defineConfig({
   site: "https://jialonglong.github.io",
-  base: "/REAL_website",
+  base: "/REAL_wb",
   vite: {
     plugins: [tailwindcss()],
   },

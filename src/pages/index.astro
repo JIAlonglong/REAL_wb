@@ -61,7 +61,7 @@ const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
   >
     <header class="relative mb-16 overflow-hidden">
       <div class="absolute inset-0">
-        <img src="/images/background.jpg" alt="" class="w-full h-full object-cover" />
+        <img src={prefix + "images/background.jpg"} alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-white/60 dark:bg-zinc-900/70 backdrop-blur-sm"></div>
       </div>
       <div class="relative z-10 mx-auto max-w-[50rem] px-6 text-center py-20">

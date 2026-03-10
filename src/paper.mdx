@@ -37,6 +37,8 @@ import Wide from "./components/Wide.astro";
 import Carousel from "./components/Carousel.astro";
 import CarouselSlide from "./components/CarouselSlide.astro";
 
+export const base = (import.meta.env.BASE_URL || "").replace(/\/$/, "");
+
 <Video src="/REAL_DEMO.mp4" />
 
 <HighlightedSection id="abstract">
@@ -56,7 +58,7 @@ Despite recent advances, existing methods remain **highly vulnerable to perceptu
 {/* ===== Teaser Figure: fig1_teaser.png ===== */}
 
 <Figure>
-  <img slot="figure" src="/images/fig1_teaser.png" alt="REAL framework teaser: robot performing parkour with nominal vision and under severe visual degradation" class="rounded-lg w-full" />
+  <img slot="figure" src={`${base}/images/fig1_teaser.png`} alt="REAL framework teaser: robot performing parkour with nominal vision and under severe visual degradation" class="rounded-lg w-full" />
   <Fragment slot="caption">Robust extreme parkour with the proposed REAL framework. The robot successfully chains highly dynamic maneuvers across complex terrains with nominal vision (green box), and maintains stable locomotion even under severe visual degradation (red box).</Fragment>
 </Figure>
 
@@ -71,7 +73,7 @@ REAL is an end-to-end policy learning framework that tightly integrates vision, 
 
 <Wide>
 <Figure>
-  <img slot="figure" src="/images/fig2_architecture.png" alt="System architecture of REAL" class="rounded-lg w-full" />
+  <img slot="figure" src={`${base}/images/fig2_architecture.png`} alt="System architecture of REAL" class="rounded-lg w-full" />
   <Fragment slot="caption">System architecture of REAL. **Stage 1** trains a privileged teacher policy via Proprioception-Terrain Associated Reasoning. **Stage 2** distills a deployable student policy using an onboard Mamba-FiLM spatial-temporal backbone and physics-guided filtering, stabilized by a consistency-aware loss gating strategy.</Fragment>
 </Figure>
 </Wide>
@@ -125,7 +127,7 @@ When action discrepancy is large, imitation learning dominates for stability. As
 {/* ===== Simulation Snapshots: fig3_terrains.png ===== */}
 
 <Figure>
-  <img slot="figure" src="/images/fig3_terrains.png" alt="Snapshots of REAL policy executing dynamic maneuvers across extreme terrains" class="rounded-lg w-full" />
+  <img slot="figure" src={`${base}/images/fig3_terrains.png`} alt="Snapshots of REAL policy executing dynamic maneuvers across extreme terrains" class="rounded-lg w-full" />
   <Fragment slot="caption">Snapshots of the REAL policy executing dynamic manoeuvres across extreme terrains.</Fragment>
 </Figure>
 
@@ -155,7 +157,7 @@ Under severe visual degradation conditions — frame drops, Gaussian noise, and 
 
 <Wide>
 <Figure>
-  <img slot="figure" src="/images/fig4_blindzone.png" alt="Simulation results on complex parkour terrains with a 1m vision-masked blind zone" class="rounded-lg w-full" />
+  <img slot="figure" src={`${base}/images/fig4_blindzone.png`} alt="Simulation results on complex parkour terrains with a 1m vision-masked blind zone" class="rounded-lg w-full" />
   <Fragment slot="caption">Simulation results on complex parkour terrains featuring a 1 m vision-masked blind zone. REAL successfully traverses all terrains while maintaining kinematic stability. Compared with Extreme Parkour baseline (top row).</Fragment>
 </Figure>
 </Wide>
@@ -174,7 +176,7 @@ With vision masked 1 m before obstacles, standard baselines suffer catastrophic 
 {/* ===== Real-world Transfer: fig6_realworld.png ===== */}
 
 <Figure>
-  <img slot="figure" src="/images/fig6_realworld.png" alt="Zero-shot sim-to-real transfer of REAL on a Unitree Go2 quadruped" class="rounded-lg w-full" />
+  <img slot="figure" src={`${base}/images/fig6_realworld.png`} alt="Zero-shot sim-to-real transfer of REAL on a Unitree Go2 quadruped" class="rounded-lg w-full" />
   <Fragment slot="caption">Zero-shot sim-to-real transfer of the REAL policy on a physical Unitree Go2 quadruped. Using only onboard perception and computing, the robot completes various real-world obstacle courses: (a) leaping onto a high platform, (b) moving through scattered boxes, and (c) climbing a steep staircase.</Fragment>
 </Figure>
 
@@ -211,7 +213,7 @@ REAL achieves robust **zero-shot sim-to-real transfer**, completing diverse real
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-zinc-800">
       <video controls muted playsinline preload="auto" class="w-full">
-        <source src="/play_videos_baseline_depth_blindzone/play-parkour_flat-L0-1.mp4" type="video/mp4" />
+        <source src={`${base}/play_videos_baseline_depth_blindzone/play-parkour_flat-L0-1.mp4`} type="video/mp4" />
       </video>
       <div class="p-4">
         <h4 class="font-semibold text-red-600 mb-2">Flat Terrain</h4>
@@ -221,7 +223,7 @@ REAL achieves robust **zero-shot sim-to-real transfer**, completing diverse real
 
     <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-zinc-800">
       <video controls muted playsinline preload="auto" class="w-full">
-        <source src="/play_videos_baseline_depth_blindzone/play-parkour_hurdle-L0-1.mp4" type="video/mp4" />
+        <source src={`${base}/play_videos_baseline_depth_blindzone/play-parkour_hurdle-L0-1.mp4`} type="video/mp4" />
       </video>
       <div class="p-4">
         <h4 class="font-semibold text-red-600 mb-2">Hurdle Terrain</h4>
@@ -231,7 +233,7 @@ REAL achieves robust **zero-shot sim-to-real transfer**, completing diverse real
 
     <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-zinc-800">
       <video controls muted playsinline preload="auto" class="w-full">
-        <source src="/play_videos_baseline_depth_blindzone/play-parkour_step-L0-1_baseline.mp4" type="video/mp4" />
+        <source src={`${base}/play_videos_baseline_depth_blindzone/play-parkour_step-L0-1_baseline.mp4`} type="video/mp4" />
       </video>
       <div class="p-4">
         <h4 class="font-semibold text-red-600 mb-2">Step Terrain</h4>
@@ -260,7 +262,7 @@ REAL achieves robust **zero-shot sim-to-real transfer**, completing diverse real
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-zinc-800">
       <video controls muted playsinline preload="auto" class="w-full">
-        <source src="/play_videos_ours_depth_blindzone/ours_flat_blind_test.mp4" type="video/mp4" />
+        <source src={`${base}/play_videos_ours_depth_blindzone/ours_flat_blind_test.mp4`} type="video/mp4" />
       </video>
       <div class="p-4">
         <h4 class="font-semibold text-green-600 mb-2">Flat Terrain</h4>
@@ -270,7 +272,7 @@ REAL achieves robust **zero-shot sim-to-real transfer**, completing diverse real
 
     <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-zinc-800">
       <video controls muted playsinline preload="auto" class="w-full">
-        <source src="/play_videos_ours_depth_blindzone/Ours_hurdle_blind_test.mp4" type="video/mp4" />
+        <source src={`${base}/play_videos_ours_depth_blindzone/Ours_hurdle_blind_test.mp4`} type="video/mp4" />
       </video>
       <div class="p-4">
         <h4 class="font-semibold text-green-600 mb-2">Hurdle Terrain</h4>
@@ -280,7 +282,7 @@ REAL achieves robust **zero-shot sim-to-real transfer**, completing diverse real
 
     <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-zinc-800">
       <video controls muted playsinline preload="auto" class="w-full">
-        <source src="/play_videos_ours_depth_blindzone/Ours_step_blind_test.mp4" type="video/mp4" />
+        <source src={`${base}/play_videos_ours_depth_blindzone/Ours_step_blind_test.mp4`} type="video/mp4" />
       </video>
       <div class="p-4">
         <h4 class="font-semibold text-green-600 mb-2">Step Terrain</h4>
@@ -295,7 +297,7 @@ REAL achieves robust **zero-shot sim-to-real transfer**, completing diverse real
 {/* ===== Inference Latency: fig7_latency.png ===== */}
 
 <Figure>
-  <img slot="figure" src="/images/fig7_latency.png" alt="Onboard inference latency comparison between REAL (Mamba) and Transformer baseline" class="rounded-lg w-full" />
+  <img slot="figure" src={`${base}/images/fig7_latency.png`} alt="Onboard inference latency comparison between REAL (Mamba) and Transformer baseline" class="rounded-lg w-full" />
   <Fragment slot="caption">Onboard inference latency measured over 1,000 continuous control steps. The REAL policy with Mamba backbone maintains a highly predictable execution time of $O(1)$ (~13.1 ms/step), strictly satisfying the 20 ms real-time control budget. The Transformer baseline averages 23.07 ms and violates the constraint.</Fragment>
 </Figure>
 
@@ -328,7 +330,7 @@ REAL achieves robust **zero-shot sim-to-real transfer**, completing diverse real
 {/* ===== Training Curve: fig8_convergence.png ===== */}
 
 <Figure>
-  <img slot="figure" src="/images/fig8_convergence.png" alt="Training convergence comparison" class="rounded-lg w-full" />
+  <img slot="figure" src={`${base}/images/fig8_convergence.png`} alt="Training convergence comparison" class="rounded-lg w-full" />
   <Fragment slot="caption">Training convergence of the depth actor. The consistency-aware loss gating accelerates imitation learning and achieves a lower final loss compared to a fixed-weight baseline.</Fragment>
 </Figure>
 
