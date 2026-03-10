@@ -1,6 +1,4 @@
 ---
-import { Font } from "astro:assets";
-
 import Links from "../components/Links.astro";
 import Authors from "../components/Authors.astro";
 import Notes from "../components/Notes.astro";
@@ -56,23 +54,24 @@ const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
     <meta property="og:type" content="website" />
     {thumbnail && <meta property="og:image" content={prefix + thumbnail} />}
 
-    <Font
-      cssVariable="--font-noto-sans"
-      preload={[{ subset: "latin", style: "normal" }]}
-    />
-
     <title>{title}</title>
   </head>
   <body
-    class="prose prose-lg prose-zinc dark:prose-invert prose-a:text-blue-500 prose-a:dark:text-blue-300 prose-a:no-underline prose-a:hover:underline prose-a:font-normal prose-code:bg-zinc-200 prose-code:dark:bg-zinc-800 prose-code:text-zinc-800 prose-code:dark:text-zinc-200 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-medium prose-code:before:content-none prose-code:after:content-none max-w-none pt-16 pb-6 font-(family-name:--font-noto-sans)"
+    class="prose prose-lg prose-zinc dark:prose-invert prose-a:text-blue-500 prose-a:dark:text-blue-300 prose-a:no-underline prose-a:hover:underline prose-a:font-normal prose-code:bg-zinc-200 prose-code:dark:bg-zinc-800 prose-code:text-zinc-800 prose-code:dark:text-zinc-200 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-medium prose-code:before:content-none prose-code:after:content-none max-w-none pb-6 font-sans"
   >
-    <header class="mx-auto mb-12 max-w-[50rem] px-6 text-center">
-      <h1 class="text-5xl font-medium">{title}</h1>
-      <div class="flex flex-col items-center gap-6">
-        <Authors authors={authors} />
-        {conference && <div>{conference}</div>}
-        {notes && <Notes notes={notes} />}
-        {links && <Links links={links} />}
+    <header class="relative mb-16 overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="/images/background.jpg" alt="" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-white/60 dark:bg-zinc-900/70 backdrop-blur-sm"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-[50rem] px-6 text-center py-20">
+        <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl leading-tight">{title}</h1>
+        <div class="flex flex-col items-center gap-4 mt-6">
+          <Authors authors={authors} />
+          {conference && <div class="text-zinc-500 dark:text-zinc-400 text-lg">{conference}</div>}
+          {notes && <Notes notes={notes} />}
+          {links && <div class="mt-2"><Links links={links} /></div>}
+        </div>
       </div>
     </header>
     <main>

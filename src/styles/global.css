@@ -166,3 +166,87 @@ main .katex-display {
     @apply cursor-pointer;
   }
 }
+
+/* 滚动动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 图片尺寸优化 */
+figure img {
+  max-height: 55vh;
+  max-width: 85%;
+  object-fit: contain;
+}
+
+table {
+  margin-inline: auto;
+  min-width: 60%;
+  max-width: 90%;
+  width: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 表格头部样式 */
+table thead th {
+  background-color: var(--color-blue-600);
+  color: white;
+  font-weight: 600;
+  padding: 1rem 1.25rem;
+  border-bottom: none;
+}
+
+/* 表格内容样式 */
+table tbody td {
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--color-zinc-200);
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 表格行悬停效果 */
+table tbody tr:hover {
+  background-color: var(--color-blue-50);
+}
+
+.dark table tbody tr:hover {
+  background-color: var(--color-zinc-800);
+}
+
+/* 表格斑马纹 */
+table tbody tr:nth-child(even) {
+  background-color: var(--color-zinc-50);
+}
+
+.dark table tbody tr:nth-child(even) {
+  background-color: var(--color-zinc-900);
+}
+
+/* 滚动平滑 */
+html {
+  scroll-behavior: smooth;
+}
